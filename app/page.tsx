@@ -7,12 +7,24 @@ import TopFeaturedProducts, {
   TopFeaturedItem,
 } from "@/app/organisms/TopFeaturedProducts";
 import { FooterMenuItem } from "@/app/atoms/FooterMenuItem";
+import { CookieConsentModal } from "@/app/organisms/cookie/CookieConsentModal";
 
 export default function HomePage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(true);
 
   const handleCartOpen = () => setIsCartOpen(true);
   const handleCartClose = () => setIsCartOpen(false);
+
+  const handleAccept = () => {
+    console.log("Cookies accepted.");
+    setModalOpen(false);
+  };
+
+  const handleReject = () => {
+    console.log("Cookies rejected.");
+    setModalOpen(false);
+  };
 
   // 上部大きなTシャツ
   const bigItem = {
@@ -130,6 +142,11 @@ export default function HomePage() {
       <TopFeaturedProducts bigItem={bigItem} topRightItems={topRightItems} />
 
       <ProductCarousel products={carouselItems} />
+      <CookieConsentModal
+        isOpen={isModalOpen}
+        onAccept={handleAccept}
+        onReject={handleReject}
+      />
     </StoreTemplate>
   );
 }
