@@ -8,6 +8,7 @@ import TopFeaturedProducts, {
 } from "@/app/organisms/TopFeaturedProducts";
 import { FooterMenuItem } from "@/app/atoms/FooterMenuItem";
 import { CookieConsentModal } from "@/app/organisms/cookie/CookieConsentModal";
+import { Button } from "@/app/atoms/Button";
 
 export default function HomePage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -140,7 +141,9 @@ export default function HomePage() {
       footerMenuItems={footerMenuItems}
     >
       <TopFeaturedProducts bigItem={bigItem} topRightItems={topRightItems} />
-
+      <Button size="small" color="red">
+        Log out
+      </Button>
       <ProductCarousel products={carouselItems} />
       <CookieConsentModal
         isOpen={isModalOpen}
